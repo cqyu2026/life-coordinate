@@ -1,0 +1,53 @@
+/* 全局重置 + 设计变量 */
+:root {
+  --color-bg: #f7f5f0;
+  --color-fg: #1f1f1f;
+  --color-muted: #6b6b6b;
+  --color-card-bg: #ffffff;
+  --color-card-border: #e5e0d8;
+  --color-accent: #6b5bff;
+  --color-accent-2: #ffb547;
+  --color-tag-bg: #f0ebff;
+  --color-tag-fg: #4b3fc0;
+  --radius-card: 16px;
+  --radius-btn: 999px;
+  --shadow-card: 0 2px 8px rgba(31, 31, 31, 0.06), 0 1px 2px rgba(31, 31, 31, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(31, 31, 31, 0.12), 0 2px 6px rgba(31, 31, 31, 0.06);
+  --shadow-modal: 0 24px 60px rgba(31, 31, 31, 0.25);
+  --flip-duration: 0.5s;
+  --flip-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --flip-duration: 0s;
+    --shadow-card-hover: var(--shadow-card);
+  }
+  * { animation: none !important; transition: none !important; }
+}

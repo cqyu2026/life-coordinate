@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script>if (location.protocol === "file:") location.replace('index.html#reverse');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选科反查 · life-coordinate</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/page-subject.css">
+  <link rel="stylesheet" href="/assets/liquid-glass.css">
+</head>
+<body class="standalone">
+  <header><a class="brand" href="/">life-coordinate</a><nav class="site-nav" aria-label="主导航"><a href="/">首页</a><a href="/#explore">探索职业</a><a href="/subject">选科反查</a></nav></header>
+  <main class="container">
+    <header class="reverse-header">
+      <h1 class="reverse-title">我的选科匹配哪些专业方向？</h1>
+      <p class="reverse-sub">选择科目，探索关联专业与职业方向</p>
+      <p class="reference-notice">基于已录入院校的有限样本，仅供选科参考；待核对专业不参与匹配，不代表当年实际可报范围。已核对项为 2024 年要求，2026 年实际报考以当年招生计划和章程为准。</p>
+    </header>
+
+    <div class="subject-picker">
+      <p class="picker-label">点击选择已选科目（最多 3 门）</p>
+      <p id="selection-status" role="status" aria-live="polite"></p><div class="subject-options" id="subject-options" role="group" aria-label="选考科目" aria-describedby="selection-status"></div>
+      <div class="preview-bar" id="preview-bar" role="status" aria-live="polite">请至少选 1 门</div>
+    </div>
+
+    <button id="retry-query" class="primary" hidden>重新查询</button>
+    <div class="result-list" id="result-list"></div>
+  </main>
+
+  <script src="/assets/ui-common.js"></script>
+  <script src="/static/js/page-subject.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>天赋觉醒舱 · 人生坐标系</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="phone">
+
+    <!-- ============================================
+    Screen: 天赋觉醒舱
+    ============================================ -->
+    <div class="screen single" id="screen-test" style="position:relative;">
+
+      <!-- 状态栏 -->
+      <div class="status-bar">
+        <span>🔮 天赋觉醒舱</span>
+        <span>⚡</span>
+      </div>
+
+      <!-- 页面标题 -->
+      <div class="test-header">
+        <div class="icon">🔮</div>
+        <div class="title">天赋觉醒舱</div>
+      </div>
+
+      <!-- 觉醒进度条 -->
+      <div class="progress-label">
+        <span>觉醒进度</span>
+        <span id="progressText">0 / 6</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+      </div>
+
+      <!-- 角色形象区 -->
+      <div class="test-character">
+        <div class="char-avatar" id="charAvatar">🧑‍🚀</div>
+        <div>
+          <div class="char-mood" id="charMood">🤔 让我看看……这个检测舱好酷！</div>
+        </div>
+      </div>
+
+      <!-- 题目区域 -->
+      <div class="question-area" id="questionArea">
+        <div class="q-num" id="qNum">Q1 / 6</div>
+        <div class="q-text" id="qText"></div>
+        <div class="choice-cards" id="choiceCards"></div>
+        <div class="hidden-talent hidden" id="hiddenTalent">✨ 隐藏天赋探测中……</div>
+      </div>
+
+      <!-- 星空粒子背景 -->
+      <div class="stars-bg">
+        <div class="star" style="top:15%;left:10%;animation-delay:0s"></div>
+        <div class="star" style="top:25%;left:75%;animation-delay:0.5s"></div>
+        <div class="star" style="top:60%;left:20%;animation-delay:1s"></div>
+        <div class="star" style="top:45%;left:85%;animation-delay:0.3s"></div>
+        <div class="star" style="top:80%;left:55%;animation-delay:0.8s"></div>
+        <div class="star" style="top:70%;left:40%;animation-delay:1.2s"></div>
+      </div>
+
+      <!-- 页面指示器 -->
+      <div class="page-indicator">
+        <div class="page-dot" title="首页"></div>
+        <div class="page-dot active" title="测试页"></div>
+        <div class="page-dot" title="报告页"></div>
+      </div>
+
+      <!-- ============================================
+      完成动画覆盖层
+      ============================================ -->
+      <div class="complete-overlay" id="completeOverlay">
+        <div class="complete-icon" id="completeIcon">✨</div>
+        <div class="complete-text">天赋觉醒完成！</div>
+        <div class="complete-sub">正在生成你的角色面板……</div>
+        <div class="complete-level-up" id="completeLevelIcon">🧑‍🚀 → 🧑‍🚀⚖️</div>
+        <div class="complete-level-text">Lv.0 → Lv.1 探索者</div>
+      </div>
+
+    </div>
+
+  </div><!-- /phone -->
+
+  <!-- 引入数据与角色脚本 -->
+  <script src="data.js"></script>
+  <script src="character.js"></script>
+
+  <script>
+  'use strict';
+
+  /* ============================================
+     全局状态
+  ============================================ */
+  var params = new URLSearchParams(window.location.search);
+  var careerId = params.get('career') || (typeof CAREERS !== 'undefined' && CAREERS.length > 0 ? CAREERS[0].id : 'doctor');
+  var currentIndex = 0;           // 当前题号索引（0-5）
+  var answers = [];               // 已选答案 [{ questionId, dimension, score }]
+  var dimensionScores = {         // 维度累分
+    logic: 0, expression: 0, aesthetic: 0,
+    empathy: 0, handsOn: 0, physical: 0
+  };
+  var isAnimating = false;       // 防止连点
+
+  console.log('🔮 天赋觉醒舱 · 职业ID:', careerId);
+
+  /* ============================================
+     查找职业数据
+  ============================================ */
+  function findCareer(id) {
+    for (var i = 0; i < CAREERS.length; i++) {
+      if (CAREERS[i].id === id) return CAREERS[i];
+    }
+    return CAREERS[0];
+  }
+
+  var currentCareer = findCareer(careerId);
+
+  /* ============================================
+     渲染题目
+  ============================================ */
+  function renderQuestion(index) {
+    if (index >= QUESTIONS.length) return;
+
+    var q = QUESTIONS[index];
+
+    document.getElementById('qNum').textContent = 'Q' + q.qNum + ' / 6';
+    document.getElementById('qText').innerHTML = q.text;
+
+    // 渲染选项卡牌
+    var cardsHtml = '';
+    q.options.forEach(function(opt) {
+      cardsHtml +=
+        '<div class="choice-card" ' +
+          'data-dimension="' + opt.dimension + '" ' +
+          'data-score="' + opt.score + '" ' +
+          'role="button" tabindex="0" ' +
+          'aria-label="' + opt.label + '：' + opt.sub + '" ' +
+          'onclick="selectChoice(this)">' +
+          '<div class="choice-emoji">' + opt.emoji + '</div>' +
+          '<div class="choice-text">' + opt.label + '</div>' +
+          '<div class="choice-sub">' + opt.sub + '</div>' +
+        '</div>';
+    });
+    document.getElementById('choiceCards').innerHTML = cardsHtml;
+
+    // 隐藏天赋标签：全程隐藏
+    var talentLabel = document.getElementById('hiddenTalent');
+    talentLabel.classList.add('hidden');
+
+    isAnimating = false;
+  }
+
+  /* ============================================
+     选择卡牌
+  ============================================ */
+  function selectChoice(el) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    var dimension = el.getAttribute('data-dimension');
+    var score = parseInt(el.getAttribute('data-score'), 10);
+    var q = QUESTIONS[currentIndex];
+
+    // 1. 视觉反馈：选中卡牌高亮
+    var cards = document.querySelectorAll('#choiceCards .choice-card');
+    cards.forEach(function(card) {
+      if (card === el) {
+        card.classList.add('selected');
+      } else {
+        card.classList.add('fading');
+      }
+    });
+
+    // 2. 记录答案
+    answers.push({
+      questionId: q.id,
+      qNum: q.qNum,
+      dimension: dimension,
+      score: score
+    });
+    dimensionScores[dimension] += score;
+
+    // 3. 粒子特效
+    spawnParticles(el);
+
+    // 4. 更新进度条
+    var answered = currentIndex + 1;
+    updateProgress(answered);
+
+    // 5. 更新角色表情
+    updateCharacterMood(answered);
+
+    // 6. 延迟加载下一题或完成
+    setTimeout(function() {
+      currentIndex++;
+
+      if (currentIndex >= QUESTIONS.length) {
+        // 所有题目完成 → 显示完成动画
+        showCompleteOverlay();
+      } else {
+        // 加载下一题
+        renderQuestion(currentIndex);
+      }
+    }, 500);
+  }
+
+  /* ============================================
+     粒子特效：选中卡牌后 ✨ 粒子飞散
+  ============================================ */
+  function spawnParticles(el) {
+    var rect = el.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2;
+    var cy = rect.top + rect.height / 2;
+    var count = 5;
+
+    for (var i = 0; i < count; i++) {
+      var particle = document.createElement('span');
+      particle.className = 'particle';
+      particle.textContent = '✨';
+
+      // 随机飞散方向和距离
+      var angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
+      var distance = 40 + Math.random() * 60;
+      var px = Math.cos(angle) * distance;
+      var py = Math.sin(angle) * distance - 30; // 偏向上方
+
+      particle.style.left = cx + 'px';
+      particle.style.top = cy + 'px';
+      particle.style.setProperty('--px', px + 'px');
+      particle.style.setProperty('--py', py + 'px');
+      particle.style.animationDuration = (0.6 + Math.random() * 0.5) + 's';
+      particle.style.animationDelay = (Math.random() * 0.15) + 's';
+
+      document.body.appendChild(particle);
+
+      // 动画结束后清理
+      (function(p) {
+        setTimeout(function() {
+          if (p.parentNode) p.parentNode.removeChild(p);
+        }, 900);
+      })(particle);
+    }
+  }
+
+  /* ============================================
+     更新进度条
+  ============================================ */
+  function updateProgress(answered) {
+    var pct = Math.round((answered / 6) * 100);
+    var fill = document.getElementById('progressFill');
+    fill.style.width = pct + '%';
+    fill.textContent = pct > 10 ? pct + '%' : '';
+    document.getElementById('progressText').textContent = answered + ' / 6';
+  }
+
+  /* ============================================
+     更新角色表情
+  ============================================ */
+  function updateCharacterMood(answered) {
+    if (answered === 1) {
+      setCharacterMood('excited');
+    } else if (answered === 3) {
+      setCharacterMood('thinking');
+    } else if (answered === 5) {
+      setCharacterMood('thrilled');
+    } else if (answered === 6) {
+      setCharacterMood('done');
+    }
+  }
+
+  /* ============================================
+     完成动画
+  ============================================ */
+  function showCompleteOverlay() {
+    var overlay = document.getElementById('completeOverlay');
+
+    // 更新职业帽子图标
+    var hatEmoji = currentCareer.emoji || '⚖️';
+    document.getElementById('completeLevelIcon').textContent =
+      '🧑‍🚀 → 🧑‍🚀' + hatEmoji;
+
+    // 重新触发 bounceIn 动画
+    var icon = document.getElementById('completeIcon');
+    icon.style.animation = 'none';
+    icon.offsetHeight; // 强制回流
+    icon.style.animation = '';
+
+    // 播放角色升级动画
+    playLevelUpAnimation(0, 1);
+
+    // 显示完成覆盖层
+    overlay.classList.add('show');
+
+    // 将测试结果存储到 localStorage
+    var testResult = {
+      careerId: careerId,
+      answers: answers,
+      dimensionScores: dimensionScores,
+      timestamp: Date.now()
+    };
+    try {
+      localStorage.setItem('testResult', JSON.stringify(testResult));
+      console.log('📦 测试结果已存储:', testResult);
+    } catch (e) {
+      console.warn('⚠️ localStorage 不可用:', e.message);
+    }
+
+    // 1.5s 后自动跳转 report.html
+    setTimeout(function() {
+      window.location.href = 'report.html?career=' + careerId;
+    }, 1800);
+  }
+
+  /* ============================================
+     初始化
+  ============================================ */
+  (function init() {
+    renderQuestion(0);
+    updateProgress(0);
+  })();
+  </script>
+
+</body>
+</html>

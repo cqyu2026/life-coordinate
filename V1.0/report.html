@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>角色面板 · 人生坐标系</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="phone">
+
+    <!-- ============================================
+    Screen: 角色面板报告
+    ============================================ -->
+    <div class="screen single" id="screen-report">
+
+      <!-- 状态栏 -->
+      <div class="status-bar">
+        <span>📜 角色面板</span>
+        <span>⭐</span>
+      </div>
+
+      <!-- 页面标题 -->
+      <div class="report-header">
+        <div class="icon">📜</div>
+        <div class="title">角色面板</div>
+      </div>
+
+      <!-- ==========================================
+      英雄卡片（角色区）
+      ========================================== -->
+      <div class="hero-card reveal-item" id="heroCard">
+        <div class="hero-avatar">
+          <span class="hero-hat" id="heroHat">⚖️</span>
+          🧑‍🚀
+        </div>
+        <div class="hero-info">
+          <div class="hero-name">你</div>
+          <div class="hero-level" id="heroLevel">Lv.1 探索者</div>
+          <div class="hero-xp-bar">
+            <div class="hero-xp-fill" id="heroXpFill" style="width: 65%;"></div>
+          </div>
+          <div class="hero-xp-text" id="heroXpText">⭐ 经验值 650/1000</div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+      本命职业卡
+      ========================================== -->
+      <div class="career-card reveal-item" id="careerCard">
+        <div class="career-icon" id="careerIcon">⚖️</div>
+        <div class="career-card-label">🎯 你的本命职业</div>
+        <div class="career-name" id="careerName">律师</div>
+        <div class="career-stars" id="careerStars">⭐⭐⭐⭐⭐</div>
+        <div class="career-match" id="careerMatch">契合度 87% · 你的灵魂和律师高度共振！</div>
+        <div class="career-tags" id="careerTags">
+          <span class="tag tag-coral">逻辑+3</span>
+          <span class="tag tag-gold">表达+5</span>
+          <span class="tag tag-green">正义感+4</span>
+        </div>
+      </div>
+
+      <!-- ==========================================
+      天赋星图（F18）
+      ========================================== -->
+      <div class="card radar-card reveal-item">
+        <div class="radar-title">🌟 天赋星图</div>
+        <div class="radar-bars" id="radarBars">
+          <!-- JS 动态渲染 6 条技能条 -->
+        </div>
+      </div>
+
+      <!-- ==========================================
+      选科装备推荐（F19）
+      ========================================== -->
+      <div class="equip-section reveal-item">
+        <div class="equip-title">📦 你的选科装备包</div>
+        <div id="equipCards">
+          <!-- JS 动态渲染 3 张装备卡片 -->
+        </div>
+      </div>
+
+      <!-- ==========================================
+      目标专业与学科分数（F20）
+      ========================================== -->
+      <!-- 推荐专业 -->
+      <div class="card majors-card reveal-item">
+        <div class="majors-title">📖 推荐专业</div>
+        <ul class="majors-list" id="majorsList">
+          <!-- JS 动态渲染 -->
+        </ul>
+      </div>
+
+      <!-- 学科分数表格 -->
+      <div class="card score-section reveal-item">
+        <div class="score-title">📊 学科分数要求（浙江新高考满分制）</div>
+        <div style="overflow-x: auto;">
+          <table class="score-table" id="scoreTable">
+            <!-- JS 动态渲染 -->
+          </table>
+        </div>
+      </div>
+
+      <!-- ==========================================
+      隐藏副本（F22）—— 条件触发：hasArtPath
+      ========================================== -->
+      <div class="dungeon-section reveal-item" id="dungeonSection" style="display: none;">
+        <div class="dungeon-toggle" id="dungeonToggle" role="button" tabindex="0" aria-label="展开隐藏副本，查看艺考路线" onclick="toggleDungeon()">
+          <span>🎉 隐藏副本解锁！</span>
+          <span class="dungeon-arrow" id="dungeonArrow">▼</span>
+        </div>
+        <div class="dungeon-content" id="dungeonContent">
+          <!-- JS 动态渲染 -->
+        </div>
+      </div>
+
+      <!-- 底部操作按钮 -->
+      <div class="report-actions" style="display: flex; gap: 10px; margin-top: 6px;">
+        <a class="btn btn-outline" href="index.html" style="flex:1;">🔄 重新探索</a>
+        <button class="btn btn-primary" style="flex:1;" onclick="alert('请在浏览器中使用系统截图功能保存 📸')">📸 截图保存角色面板</button>
+      </div>
+
+      <!-- 页面指示器 -->
+      <div class="page-indicator">
+        <div class="page-dot" title="首页"></div>
+        <div class="page-dot" title="测试页"></div>
+        <div class="page-dot active" title="报告页"></div>
+      </div>
+
+    </div>
+
+  </div><!-- /phone -->
+
+  <!-- 引入数据与角色脚本 -->
+  <script src="data.js"></script>
+  <script src="character.js"></script>
+
+  <script>
+  'use strict';
+
+  /* ============================================
+     数据加载
+  ============================================ */
+
+  // 1. 读取 URL 参数
+  var params = new URLSearchParams(window.location.search);
+  var careerId = params.get('career');
+
+  // 2. 读取 localStorage 测试结果
+  var testResult = null;
+  try {
+    var raw = localStorage.getItem('testResult');
+    if (raw) {
+      testResult = JSON.parse(raw);
+    }
+  } catch (e) {
+    console.warn('⚠️ localStorage 数据解析失败，使用默认值');
+  }
+
+  // 3. 如果 URL 无 career 参数但 localStorage 有，从 localStorage 取
+  if (!careerId && testResult && testResult.careerId) {
+    careerId = testResult.careerId;
+  }
+
+  // 4. 兜底：默认第一个职业（医生）
+  if (!careerId) {
+    careerId = CAREERS.length > 0 ? CAREERS[0].id : 'doctor';
+  }
+
+  console.log('📜 角色面板 · 职业ID:', careerId);
+  console.log('📦 localStorage 测试数据:', testResult ? '存在' : '无');
+
+  /* ============================================
+     查找职业数据
+  ============================================ */
+  function findCareer(id) {
+    for (var i = 0; i < CAREERS.length; i++) {
+      if (CAREERS[i].id === id) return CAREERS[i];
+    }
+    return null;
+  }
+
+  var career = findCareer(careerId);
+
+  // 5. 职业 ID 不存在 → 显示错误提示并自动跳回首页
+  if (!career) {
+    var screen = document.getElementById('screen-report');
+    screen.innerHTML =
+      '<div style="text-align:center;padding:60px 20px;">' +
+      '<div style="font-size:64px;">🔍</div>' +
+      '<h2 style="color:#6B4226;margin:16px 0;">职业未找到</h2>' +
+      '<p style="color:#7A6652;margin-bottom:8px;">找不到职业「' + careerId + '」的数据</p>' +
+      '<p style="color:#7A6652;font-size:12px;">3 秒后自动返回职业小镇...</p>' +
+      '<a href="index.html" style="color:#FF8A7A;font-weight:700;">← 立即返回</a>' +
+      '</div>';
+    setTimeout(function() {
+      window.location.href = 'index.html';
+    }, 3000);
+    // 停止后续执行
+    throw new Error('Career not found: ' + careerId);
+  }
+
+  /* ============================================
+     渲染页面
+  ============================================ */
+
+  // --- 计算用户维度得分（提前计算，供匹配度使用） ---
+  var dims = career.dimensions;
+  var DIM_KEYS = ['logic', 'expression', 'aesthetic', 'empathy', 'handsOn', 'physical'];
+
+  var userScores = {};
+  if (testResult && testResult.dimensionScores) {
+    // 用户测试得分（原始 0-20 → 标准化为 0-100）
+    var ds = testResult.dimensionScores;
+    DIM_KEYS.forEach(function(k) {
+      userScores[k] = Math.round((ds[k] || 0) * 5);
+    });
+  } else {
+    // 无测试数据 → 使用职业默认值
+    DIM_KEYS.forEach(function(k) {
+      userScores[k] = dims[k];
+    });
+  }
+
+  // --- 动态计算匹配度 ---
+  var dynamicMatch, dynamicStars;
+
+  if (testResult && testResult.dimensionScores) {
+    // 有测试数据：相似度 = 100 - |用户得分 - 职业维度值|，取 6 维平均
+    var similaritySum = 0;
+    DIM_KEYS.forEach(function(k) {
+      var diff = Math.abs(userScores[k] - dims[k]);
+      similaritySum += Math.max(0, 100 - diff);
+    });
+    dynamicMatch = Math.round(similaritySum / DIM_KEYS.length);
+  } else {
+    // 无测试数据：使用职业默认匹配度
+    dynamicMatch = career.matchRate;
+  }
+
+  // 动态星级：>=90 → 5, >=75 → 4, >=60 → 3, >=45 → 2, else 1
+  if (dynamicMatch >= 90) dynamicStars = 5;
+  else if (dynamicMatch >= 75) dynamicStars = 4;
+  else if (dynamicMatch >= 60) dynamicStars = 3;
+  else if (dynamicMatch >= 45) dynamicStars = 2;
+  else dynamicStars = 1;
+
+  // --- 英雄卡片 ---
+  setCharacterHat(career.emoji);
+
+  // 经验值（基于测试进度，无测试数据时默认 65%）
+  var xpPct = testResult ? Math.min(Math.round((testResult.answers.length / 6) * 100), 100) : 65;
+  var xpValue = Math.round(xpPct * 10);
+
+  document.getElementById('heroXpFill').style.width = xpPct + '%';
+  document.getElementById('heroXpText').textContent = '⭐ 经验值 ' + xpValue + '/1000';
+
+  // --- 本命职业卡 ---
+  document.getElementById('careerIcon').textContent = career.emoji;
+  document.getElementById('careerName').textContent = career.name;
+
+  // 星级（动态）
+  var starsHtml = '';
+  for (var i = 0; i < 5; i++) {
+    starsHtml += i < dynamicStars ? '⭐' : '☆';
+  }
+  document.getElementById('careerStars').textContent = starsHtml;
+
+  // 匹配度文案（动态）
+  var vibeText = dynamicMatch >= 90 ? '灵魂高度共振！' :
+                 dynamicMatch >= 75 ? '契合度很高！' :
+                 dynamicMatch >= 60 ? '有不错的契合度~' : '还有成长空间！';
+  document.getElementById('careerMatch').textContent =
+    '契合度 ' + dynamicMatch + '% · 你的灵魂和' + career.name + vibeText;
+
+  // 天赋词条
+  var tagsHtml = '';
+  career.talentWords.forEach(function(tw) {
+    tagsHtml += '<span class="tag ' + tw.tagClass + '">' + tw.text + '</span>';
+  });
+  document.getElementById('careerTags').innerHTML = tagsHtml;
+
+  /* ============================================
+     天赋星图渲染
+  ============================================ */
+
+  // 6 维度定义：[英文key, 中文标签, CSS颜色类后缀]
+  var DIMENSIONS = [
+    { key: 'logic',      label: '逻辑', cls: 'radar-bar-a' },
+    { key: 'expression', label: '表达', cls: 'radar-bar-b' },
+    { key: 'aesthetic',  label: '审美', cls: 'radar-bar-c' },
+    { key: 'empathy',    label: '共情', cls: 'radar-bar-d' },
+    { key: 'handsOn',    label: '动手', cls: 'radar-bar-e' },
+    { key: 'physical',   label: '体力', cls: 'radar-bar-f' }
+  ];
+
+  var radarHtml = '';
+  DIMENSIONS.forEach(function(d) {
+    var score = userScores[d.key] || 0;
+    radarHtml +=
+      '<div class="radar-row">' +
+        '<span class="radar-label">' + d.label + '</span>' +
+        '<div class="radar-bar-wrap">' +
+          '<div class="radar-bar-fill ' + d.cls + '" style="width:' + score + '%"></div>' +
+        '</div>' +
+        '<span class="radar-val">' + score + '</span>' +
+      '</div>';
+  });
+  document.getElementById('radarBars').innerHTML = radarHtml;
+
+  /* ============================================
+     选科装备包渲染
+  ============================================ */
+
+  var eq = career.equipment;
+
+  var equipmentData = [
+    {
+      type: 'main',
+      icon: '⚔️',
+      label: '主武器 · 必选',
+      labelColor: 'var(--forest)',
+      name: eq.mainWeapon,
+      reason: eq.mainReason,
+      badge: '必选',
+      badgeClass: 'must'
+    },
+    {
+      type: 'sub',
+      icon: '🗡️',
+      label: '副武器 · 推荐',
+      labelColor: 'var(--brown-light)',
+      name: eq.subWeapon,
+      reason: eq.subReason,
+      badge: '推荐',
+      badgeClass: 'rec'
+    },
+    {
+      type: 'opt',
+      icon: '🛡️',
+      label: '防具 · 可选',
+      labelColor: '#5A6A8A',
+      name: eq.armor + '（二选一）',
+      reason: eq.armorReason + ' · ' + eq.armorTrend,
+      badge: '可选',
+      badgeClass: 'opt-tag'
+    }
+  ];
+
+  var equipHtml = '';
+  equipmentData.forEach(function(item) {
+    equipHtml +=
+      '<div class="equip-card ' + item.type + '">' +
+        '<div class="equip-icon">' + item.icon + '</div>' +
+        '<div class="equip-info">' +
+          '<div class="equip-label" style="color:' + item.labelColor + ';">' + item.label + '</div>' +
+          '<div class="equip-name">' + item.name + '</div>' +
+          '<div class="equip-reason">' + item.reason + '</div>' +
+        '</div>' +
+        '<span class="equip-badge ' + item.badgeClass + '">' + item.badge + '</span>' +
+      '</div>';
+  });
+  document.getElementById('equipCards').innerHTML = equipHtml;
+
+  /* ============================================
+     推荐专业渲染
+  ============================================ */
+  var majorsHtml = '';
+  career.majors.forEach(function(m) {
+    majorsHtml += '<li>' + m + '</li>';
+  });
+  document.getElementById('majorsList').innerHTML = majorsHtml;
+
+  /* ============================================
+     学科分数表格渲染
+  ============================================ */
+  var scoresKU = career.scores.keyUniversity;
+  var scoresNU = career.scores.normalUniversity;
+
+  // 收集所有科目键（排除"总分"）
+  var subjectKeys = [];
+  Object.keys(scoresKU).forEach(function(k) {
+    if (k !== '总分') subjectKeys.push(k);
+  });
+
+  var scoreHtml = '<thead><tr><th>科目</th><th>重点大学</th><th>双非本科</th></tr></thead><tbody>';
+
+  subjectKeys.forEach(function(subj) {
+    var ku = scoresKU[subj];
+    var nu = scoresNU[subj];
+    var maxVal = subj === '语文' || subj === '数学' || subj === '英语' ? 150 : 100;
+    scoreHtml +=
+      '<tr>' +
+        '<td>' + subj + '</td>' +
+        '<td>' + ku + '<span class="sub-label"> /' + maxVal + '</span></td>' +
+        '<td>' + nu + '<span class="sub-label"> /' + maxVal + '</span></td>' +
+      '</tr>';
+  });
+
+  // 总分行
+  scoreHtml +=
+    '<tr class="total-row">' +
+      '<td>总分</td>' +
+      '<td>' + scoresKU['总分'] + '<span class="sub-label"> /750</span></td>' +
+      '<td>' + scoresNU['总分'] + '<span class="sub-label"> /750</span></td>' +
+    '</tr>';
+
+  scoreHtml += '</tbody>';
+  document.getElementById('scoreTable').innerHTML = scoreHtml;
+
+  /* ============================================
+     隐藏副本渲染（动态触发：测试得分匹配艺术职业即解锁）
+  ============================================ */
+
+  // 辅助函数：计算用户得分与某个职业维度的匹配度
+  function calcMatch(scores, careerDims) {
+    var sum = 0;
+    DIM_KEYS.forEach(function(k) {
+      var diff = Math.abs((scores[k] || 0) - (careerDims[k] || 0));
+      sum += Math.max(0, 100 - diff);
+    });
+    return Math.round(sum / DIM_KEYS.length);
+  }
+
+  // 找出所有含艺考路线的职业，取匹配度最高的
+  var bestArtCareer = null;
+  var bestArtMatch = 0;
+  CAREERS.forEach(function(c) {
+    if (c.hasArtPath && c.artPaths) {
+      var m = calcMatch(userScores, c.dimensions);
+      if (m > bestArtMatch) {
+        bestArtMatch = m;
+        bestArtCareer = c;
+      }
+    }
+  });
+
+  // 艺术天赋加权分 = 审美×0.35 + 动手×0.35 + 表达×0.3
+  // 隐藏副本解锁条件：艺术天赋分 ≥ 60 且 最佳艺术职业匹配 ≥ 75%
+  var artTalentScore = Math.round(
+    (userScores.aesthetic || 0) * 0.35 +
+    (userScores.handsOn || 0) * 0.35 +
+    (userScores.expression || 0) * 0.3
+  );
+  var ART_TALENT_MIN = 60;
+  var DUNGEON_THRESHOLD = 75;
+
+  if (bestArtCareer && artTalentScore >= ART_TALENT_MIN && bestArtMatch >= DUNGEON_THRESHOLD) {
+    var dungeonSection = document.getElementById('dungeonSection');
+    dungeonSection.style.display = 'block';
+
+    var ap = bestArtCareer.artPaths;
+    var dungeonHtml = '<p style="font-size:12px;color:var(--text-light);margin-bottom:10px;">' +
+      '🎯 天赋探测发现：你的能力倾向与 <b>' + bestArtCareer.name + '</b>（匹配度 ' + bestArtMatch + '%）高度契合！' +
+      '</p><p style="font-size:12px;color:var(--text-light);margin-bottom:10px;">' +
+      ap.description + '</p>';
+
+    ap.routes.forEach(function(route) {
+      dungeonHtml +=
+        '<div class="route-card">' +
+          '<div class="route-label">🎨 ' + route.name + ' —— 艺考路线分岔路口</div>' +
+          '<div class="route-options">' +
+            '<div class="route-opt route-a">普通路线<br>→ 高考统招</div>' +
+            '<div class="route-opt route-b">艺考路线<br>→ ' + route.name + '</div>' +
+          '</div>' +
+          '<ul class="route-score-list">' +
+            '<li>🎨 联考专业分 &nbsp; ' + route['联考专业分'] + '</li>' +
+            '<li>🏫 校考专业分 &nbsp; ' + route['校考专业分'] + '</li>' +
+            '<li>📖 文化课最低分 ' + route['文化课最低分'] + '</li>' +
+          '</ul>' +
+        '</div>';
+    });
+
+    dungeonHtml += '<p class="route-tip">💡 检测到艺术天赋，你还有这条路可以走~</p>';
+    document.getElementById('dungeonContent').innerHTML = dungeonHtml;
+  }
+
+  /* ============================================
+     入场动画：各模块依次从下往上滑入
+  ============================================ */
+  // 给所有 .reveal-item 触发动画（页面已渲染后重新触发）
+  (function triggerReveal() {
+    var items = document.querySelectorAll('.reveal-item');
+    // 先重置所有动画
+    items.forEach(function(item) {
+      item.style.animation = 'none';
+    });
+    // 强制回流后恢复动画
+    items[0] && items[0].offsetHeight;
+    items.forEach(function(item) {
+      item.style.animation = '';
+    });
+  })();
+  </script>
+
+  <!-- 隐藏副本切换脚本 -->
+  <script>
+  'use strict';
+  function toggleDungeon() {
+    var content = document.getElementById('dungeonContent');
+    var toggle = document.getElementById('dungeonToggle');
+    var isOpen = content.classList.contains('show');
+    if (isOpen) {
+      content.classList.remove('show');
+      toggle.classList.remove('open');
+    } else {
+      content.classList.add('show');
+      toggle.classList.add('open');
+    }
+  }
+  </script>
+
+</body>
+</html>

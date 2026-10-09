@@ -1,0 +1,98 @@
+/* P3 选科结果页 */
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.result-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+.back-link {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.back-link:hover { color: var(--color-accent); }
+
+.major-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.major-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+.major-card .major-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.major-card .major-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.major-card .major-cat {
+  padding: 3px 12px;
+  border-radius: var(--radius-btn);
+  background: var(--color-tag-bg);
+  color: var(--color-tag-fg);
+  font-size: 12px;
+}
+.subject-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.subject-chip {
+  padding: 4px 12px;
+  border-radius: var(--radius-btn);
+  font-size: 13px;
+}
+.subject-chip.must {
+  background: var(--color-accent);
+  color: #fff;
+}
+.subject-chip.limit {
+  background: var(--color-accent-2);
+  color: var(--color-fg);
+}
+.subject-chip.any {
+  background: #d0d0d0;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.major-note {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fff8e7;
+  border-left: 3px solid var(--color-accent-2);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #5a4a1c;
+}
+.major-source {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.bottom-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="336" viewBox="0 0 280 336" fill="none" stroke="#0b0b09" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <title>life-coordinate 30 个职业简笔图标</title>
+  <desc>每个图标占 42×42 像素，透明背景，适配职业选择器小框。</desc>
+  <defs>
+    <symbol id="clinical-doctor" viewBox="0 0 42 42"><circle cx="21" cy="11" r="5"/><path d="M11 31c0-7 4-11 10-11s10 4 10 11M25 20v7c0 3 2 5 5 5M30 32c3 0 5-2 5-5v-5M30 22l5-5 3 3M35 17l-2-2"/></symbol>
+    <symbol id="nurse" viewBox="0 0 42 42"><path d="M15 9h12v7H15z"/><path d="M21 12v-3M18 12h6"/><circle cx="21" cy="21" r="6"/><path d="M11 35c0-7 4-10 10-10s10 3 10 10M32 22l4 4M36 26l-3 3"/></symbol>
+    <symbol id="dentist" viewBox="0 0 42 42"><path d="M16 10c-4 2-4 8-2 12 1 3 1 8 4 9 2-1 2-6 4-6s2 5 4 6c3-1 3-6 4-9 2-4 2-10-2-12-3-2-5 1-7 1s-4-3-5-1z"/><path d="M29 26l7-7M34 18l2 2"/></symbol>
+    <symbol id="pharmacist" viewBox="0 0 42 42"><path d="M14 12h14v21H14z"/><path d="M16 12V9h10v3M18 18h6M18 23h6M18 28h4"/><circle cx="32" cy="29" r="5"/><path d="M29 29h6M32 26v6"/></symbol>
+    <symbol id="software-engineer" viewBox="0 0 42 42"><rect x="9" y="8" width="24" height="17" rx="2"/><path d="M21 25v5M15 33h12M16 16l-4 3 4 3M26 16l4 3-4 3M22 15l-2 8"/></symbol>
+    <symbol id="mechanical-engineer" viewBox="0 0 42 42"><circle cx="21" cy="21" r="7"/><path d="M21 8v5M21 29v5M8 21h5M29 21h5M12 12l4 4M26 26l4 4M30 12l-4 4M16 26l-4 4"/><circle cx="21" cy="21" r="2"/></symbol>
+    <symbol id="architectural-engineer" viewBox="0 0 42 42"><path d="M9 33V18l12-9 12 9v15M15 33V21h12v12M9 33h24M18 27h6"/></symbol>
+    <symbol id="electrical-engineer" viewBox="0 0 42 42"><path d="M23 7L12 23h9l-2 12 11-17h-9z"/><path d="M8 15h4M30 29h4M10 31h4"/></symbol>
+    <symbol id="data-analyst" viewBox="0 0 42 42"><path d="M9 33V10M9 33h25M14 28V20M20 28V15M26 28V23M32 28V12"/></symbol>
+    <symbol id="biologist" viewBox="0 0 42 42"><circle cx="21" cy="21" r="11"/><path d="M15 15c8 3 8 9 0 12M27 15c-8 3-8 9 0 12M21 10v22"/></symbol>
+    <symbol id="chemist" viewBox="0 0 42 42"><path d="M17 8h8M19 8v10l-8 13c-1 2 1 4 3 4h14c2 0 4-2 3-4l-8-13V8M14 27h14"/></symbol>
+    <symbol id="environment-scientist" viewBox="0 0 42 42"><path d="M21 34V18M21 25c-5-5-10-3-11-9 6-2 11 1 11 7M21 22c5-6 10-4 11-10-6-2-11 1-11 7M14 34h14"/></symbol>
+    <symbol id="journalist" viewBox="0 0 42 42"><rect x="10" y="9" width="22" height="24"/><path d="M14 14h14M14 19h14M14 24h8M14 29h11"/></symbol>
+    <symbol id="editor" viewBox="0 0 42 42"><path d="M12 31l3-8 14-14 5 5-14 14zM26 12l5 5M12 34h20"/></symbol>
+    <symbol id="translator" viewBox="0 0 42 42"><path d="M9 13h14M16 9v4c0 8-4 13-8 16M11 21c3 4 6 6 10 7M25 13h9M29 13c0 7 2 12 6 18M25 25h10"/></symbol>
+    <symbol id="social-worker" viewBox="0 0 42 42"><circle cx="15" cy="14" r="4"/><circle cx="28" cy="14" r="4"/><path d="M8 31c0-6 3-9 7-9s7 3 7 9M21 31c0-6 3-9 7-9s7 3 7 9M19 19h4"/></symbol>
+    <symbol id="graphic-designer" viewBox="0 0 42 42"><path d="M11 10h20v22H11z"/><circle cx="17" cy="16" r="2"/><path d="M13 28l6-6 4 4 3-3 3 5"/></symbol>
+    <symbol id="animator" viewBox="0 0 42 42"><rect x="9" y="10" width="24" height="20"/><path d="M14 10v20M28 10v20M9 17h24M9 23h24M18 27l4-7 4 7z"/></symbol>
+    <symbol id="photographer" viewBox="0 0 42 42"><path d="M9 15h7l2-4h6l2 4h7v17H9z"/><circle cx="21" cy="23" r="6"/><circle cx="30" cy="19" r="1"/></symbol>
+    <symbol id="music-producer" viewBox="0 0 42 42"><path d="M15 29V11l15-3v18M15 29c0 3-7 3-7 0s7-4 7 0M30 26c0 3-7 3-7 0s7-4 7 0"/></symbol>
+    <symbol id="product-manager" viewBox="0 0 42 42"><rect x="10" y="10" width="22" height="22"/><path d="M15 16h12M15 21h12M15 26h7M29 30l5 4"/></symbol>
+    <symbol id="marketing" viewBox="0 0 42 42"><path d="M10 21h8l12-6v12l-12-6h-8zM18 27l3 7h-5l-3-7M31 18v6M34 15v12"/></symbol>
+    <symbol id="accountant" viewBox="0 0 42 42"><rect x="12" y="8" width="18" height="26"/><path d="M16 13h10M16 19h3M23 19h3M16 25h3M23 25h3M16 30h10"/></symbol>
+    <symbol id="hr" viewBox="0 0 42 42"><circle cx="21" cy="14" r="5"/><path d="M11 33c0-7 4-11 10-11s10 4 10 11M8 18h6M28 18h6M11 10l4 4M31 10l-4 4"/></symbol>
+    <symbol id="secondary-teacher" viewBox="0 0 42 42"><path d="M9 11h24v17H9zM21 28v6M15 34h12M13 16h16M13 21h10"/></symbol>
+    <symbol id="kindergarten-teacher" viewBox="0 0 42 42"><circle cx="21" cy="12" r="5"/><path d="M12 33c0-7 3-11 9-11s9 4 9 11M10 16c2-4 5-6 11-6s9 2 11 6M9 35h24"/></symbol>
+    <symbol id="education-researcher" viewBox="0 0 42 42"><path d="M10 11h22v22H10zM15 16h12M15 21h12M15 26h8"/><circle cx="30" cy="30" r="5"/><path d="M34 34l4 4"/></symbol>
+    <symbol id="trainer" viewBox="0 0 42 42"><rect x="10" y="9" width="22" height="14"/><path d="M21 23v10M16 34h10M15 15h12M15 19h8"/><circle cx="33" cy="30" r="4"/></symbol>
+    <symbol id="lawyer" viewBox="0 0 42 42"><path d="M21 8v24M12 14h18M10 14l-5 9h10zM32 14l-5 9h10zM14 34h14"/></symbol>
+    <symbol id="legal-counsel" viewBox="0 0 42 42"><path d="M11 9h20v25H11zM15 14h12M15 20h12M15 26h8M28 30l6 6"/></symbol>
+  </defs>
+  <g stroke-width="1.7">
+    <use href="#clinical-doctor" x="0" y="0" width="42" height="42"/><use href="#nurse" x="56" y="0" width="42" height="42"/><use href="#dentist" x="112" y="0" width="42" height="42"/><use href="#pharmacist" x="168" y="0" width="42" height="42"/><use href="#software-engineer" x="224" y="0" width="42" height="42"/>
+    <use href="#mechanical-engineer" x="0" y="56" width="42" height="42"/><use href="#architectural-engineer" x="56" y="56" width="42" height="42"/><use href="#electrical-engineer" x="112" y="56" width="42" height="42"/><use href="#data-analyst" x="168" y="56" width="42" height="42"/><use href="#biologist" x="224" y="56" width="42" height="42"/>
+    <use href="#chemist" x="0" y="112" width="42" height="42"/><use href="#environment-scientist" x="56" y="112" width="42" height="42"/><use href="#journalist" x="112" y="112" width="42" height="42"/><use href="#editor" x="168" y="112" width="42" height="42"/><use href="#translator" x="224" y="112" width="42" height="42"/>
+    <use href="#social-worker" x="0" y="168" width="42" height="42"/><use href="#graphic-designer" x="56" y="168" width="42" height="42"/><use href="#animator" x="112" y="168" width="42" height="42"/><use href="#photographer" x="168" y="168" width="42" height="42"/><use href="#music-producer" x="224" y="168" width="42" height="42"/>
+    <use href="#product-manager" x="0" y="224" width="42" height="42"/><use href="#marketing" x="56" y="224" width="42" height="42"/><use href="#accountant" x="112" y="224" width="42" height="42"/><use href="#hr" x="168" y="224" width="42" height="42"/><use href="#secondary-teacher" x="224" y="224" width="42" height="42"/>
+    <use href="#kindergarten-teacher" x="0" y="280" width="42" height="42"/><use href="#education-researcher" x="56" y="280" width="42" height="42"/><use href="#trainer" x="112" y="280" width="42" height="42"/><use href="#lawyer" x="168" y="280" width="42" height="42"/><use href="#legal-counsel" x="224" y="280" width="42" height="42"/>
+  </g>
+</svg>

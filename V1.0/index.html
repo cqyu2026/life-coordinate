@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>人生坐标系 · 高一选科与生涯规划助手</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="phone">
+
+    <!-- ============================================
+    Screen 1: 职业小镇首页
+    ============================================ -->
+    <div class="screen active" id="screen-town">
+      <div class="status-bar">
+        <span>📶 职业小镇</span>
+        <span>🔋</span>
+      </div>
+
+      <!-- 右上角探险家头像 -->
+      <div class="avatar-row">
+        <div class="avatar">🧑‍🚀</div>
+      </div>
+
+      <!-- 像素风招牌 -->
+      <div class="town-header">
+        <div class="town-sign">
+          <span class="sign-icon">🏠</span>
+          <span class="sign-text">欢迎来到职业小镇 ✨</span>
+        </div>
+      </div>
+
+      <!-- 副标题引导 -->
+      <p class="town-subtitle">
+        这里有<span class="highlight">15种人生</span>，选一个你感兴趣的，<br>推开门看看。
+      </p>
+
+      <!-- 15扇职业门网格（JS 动态渲染） -->
+      <div class="door-grid" id="doorGrid">
+        <!-- 由 renderDoors() 动态生成 -->
+      </div>
+
+      <!-- 底部引导提示 -->
+      <div class="town-tip">💡 小提示：跟着直觉走，选最吸引你的那扇门~</div>
+
+      <!-- 页面指示器 -->
+      <div class="page-indicator">
+        <div class="page-dot active" title="首页"></div>
+        <div class="page-dot" title="测试页" onclick="showScreen('screen-test')" style="cursor:pointer"></div>
+        <div class="page-dot" title="报告页" onclick="showScreen('screen-report')" style="cursor:pointer"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+    Screen 2: 天赋觉醒舱
+    ============================================ -->
+    <div class="screen" id="screen-test">
+      <div class="status-bar">
+        <span>🔮 天赋觉醒舱</span>
+        <span>⚡</span>
+      </div>
+
+      <!-- 页面内容将在后续步骤中实现 -->
+
+      <!-- 页面指示器 -->
+      <div class="page-indicator">
+        <div class="page-dot" title="首页" onclick="showScreen('screen-town')" style="cursor:pointer"></div>
+        <div class="page-dot active" title="测试页"></div>
+        <div class="page-dot" title="报告页" onclick="showScreen('screen-report')" style="cursor:pointer"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+    Screen 3: 角色面板报告
+    ============================================ -->
+    <div class="screen" id="screen-report">
+      <div class="status-bar">
+        <span>📜 角色面板</span>
+        <span>⭐</span>
+      </div>
+
+      <!-- 页面内容将在后续步骤中实现 -->
+
+      <!-- 页面指示器 -->
+      <div class="page-indicator">
+        <div class="page-dot" title="首页" onclick="showScreen('screen-town')" style="cursor:pointer"></div>
+        <div class="page-dot" title="测试页" onclick="showScreen('screen-test')" style="cursor:pointer"></div>
+        <div class="page-dot active" title="报告页"></div>
+      </div>
+    </div>
+
+  </div><!-- /phone -->
+
+  <!-- ============================================
+  Modal Overlay: 职业详情模态框
+  ============================================ -->
+  <div class="overlay" id="modalOverlay">
+    <div class="modal" id="modalContent">
+      <button class="modal-close" id="modalCloseBtn" aria-label="关闭">✕</button>
+
+      <div class="album-title" id="modalTitle">📸 律师的一天</div>
+      <div class="album-motto" id="modalMotto">⚖️ 用逻辑为正义辩护</div>
+
+      <!-- 场景轮播 -->
+      <div class="scene-carousel">
+        <div class="scene-img" id="sceneImg">📚</div>
+        <div class="scene-bubble" id="sceneBubble">"8:00 到律所，一杯咖啡开始阅卷 📚"</div>
+        <div class="scene-dots" id="sceneDots">
+          <div class="scene-dot active"></div>
+          <div class="scene-dot"></div>
+          <div class="scene-dot"></div>
+        </div>
+      </div>
+
+      <!-- CTA 主按钮 -->
+      <button class="btn btn-primary" id="modalCtaBtn" onclick="goToTest()">
+        🎮 我想扮演这个角色，开始天赋检测 →
+      </button>
+
+      <!-- 次要按钮 -->
+      <button class="btn btn-outline" id="modalBackBtn" onclick="closeModal()">
+        🚪 回到小镇，再看看其他职业
+      </button>
+    </div>
+  </div>
+
+  <!-- 引入数据与角色脚本 -->
+  <script src="data.js"></script>
+  <script src="character.js"></script>
+
+  <script>
+  'use strict';
+
+  /* ============================================
+     页面切换系统
+  ============================================ */
+  var SCREEN_ORDER = ['screen-town', 'screen-test', 'screen-report'];
+
+  function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(function(s) {
+      s.classList.remove('active');
+    });
+    document.getElementById(screenId).classList.add('active');
+
+    var activeIndex = SCREEN_ORDER.indexOf(screenId);
+    document.querySelectorAll('#' + screenId + ' .page-dot').forEach(function(dot, i) {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  /* ============================================
+     动态渲染职业门（从 CAREERS 数据）
+  ============================================ */
+  function renderDoors() {
+    var grid = document.getElementById('doorGrid');
+    if (!grid || typeof CAREERS === 'undefined') return;
+
+    grid.innerHTML = '';
+
+    CAREERS.forEach(function(career) {
+      var door = document.createElement('div');
+      door.className = 'door door-' + career.doorColor;
+      door.setAttribute('data-career-id', career.id);
+
+      door.setAttribute('role', 'button');
+      door.setAttribute('aria-label', career.name + '，' + career.doorSub);
+      door.setAttribute('tabindex', '0');
+      door.innerHTML =
+        '<span class="door-icon">🚪</span>' +
+        '<span class="door-num">' + career.doorNum + '</span>' +
+        '<span class="door-name">' + career.name + '</span>' +
+        '<span class="door-sub">' + career.doorSub + '</span>';
+
+      // 点击事件：开门动画 → 模态框
+      door.addEventListener('click', function() {
+        openModal(career);
+      });
+
+      grid.appendChild(door);
+    });
+  }
+
+  /* ============================================
+     模态框系统
+  ============================================ */
+  var currentCareerId = null;
+  var currentScene = 0;
+  var sceneTimer = null;
+
+  /* 根据职业 ID 查找职业数据 */
+  function findCareerById(careerId) {
+    for (var i = 0; i < CAREERS.length; i++) {
+      if (CAREERS[i].id === careerId) return CAREERS[i];
+    }
+    return CAREERS[0]; // 兜底：返回第一个职业
+  }
+
+  /* 根据职业对象查找职业数据 */
+  function findCareerByName(name) {
+    for (var i = 0; i < CAREERS.length; i++) {
+      if (CAREERS[i].name === name) return CAREERS[i];
+    }
+    return CAREERS[0];
+  }
+
+  /* 打开模态框 */
+  function openModal(career) {
+    currentCareerId = career.id;
+    currentScene = 0;
+
+    // 1. 开门动画：给被点击的门添加动画类
+    var clickedDoor = document.querySelector('.door[data-career-id="' + career.id + '"]');
+    if (clickedDoor) {
+      clickedDoor.classList.add('door-opening');
+      // 动画结束后移除类并显示模态框
+      setTimeout(function() {
+        if (clickedDoor) {
+          clickedDoor.classList.remove('door-opening');
+        }
+        showModalPanel(career);
+      }, 500);
+    } else {
+      // 兜底：直接显示模态框
+      showModalPanel(career);
+    }
+  }
+
+  /* 显示模态框面板并填充数据 */
+  function showModalPanel(career) {
+    // 更新标题和文案
+    document.getElementById('modalTitle').textContent = '📸 ' + career.name + '的一天';
+    document.getElementById('modalMotto').textContent = career.emoji + ' ' + career.motto;
+
+    // 更新场景
+    updateScene(career);
+
+    // 更新 CTA 按钮，存储职业 ID
+    var ctaBtn = document.getElementById('modalCtaBtn');
+    ctaBtn.setAttribute('data-career-id', career.id);
+
+    // 显示蒙层
+    document.getElementById('modalOverlay').classList.add('show');
+  }
+
+  /* 更新场景展示 */
+  function updateScene(career) {
+    if (!career) {
+      career = findCareerById(currentCareerId);
+    }
+
+    var sceneIdx = currentScene % 3;
+
+    document.getElementById('sceneImg').textContent = career.scenes[sceneIdx];
+    document.getElementById('sceneBubble').textContent = career.bubbles[sceneIdx];
+
+    // 更新指示点
+    var dots = document.querySelectorAll('#sceneDots .scene-dot');
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === sceneIdx);
+    });
+  }
+
+  /* 场景图点击：切换到下一张 */
+  function nextScene() {
+    currentScene = (currentScene + 1) % 3;
+    var career = findCareerById(currentCareerId);
+    updateScene(career);
+  }
+
+  /* 关闭模态框 */
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+  }
+
+  /* 跳转到测试页 */
+  function goToTest() {
+    // 优先使用全局变量，兜底从 CTA 按钮 data 属性读取
+    var careerId = currentCareerId;
+    if (!careerId) {
+      var ctaBtn = document.getElementById('modalCtaBtn');
+      careerId = ctaBtn ? ctaBtn.getAttribute('data-career-id') : null;
+    }
+    // 最终兜底
+    if (!careerId) {
+      careerId = (typeof CAREERS !== 'undefined' && CAREERS.length > 0) ? CAREERS[0].id : 'doctor';
+    }
+    console.log('🚀 跳转测试页 · 职业ID:', careerId);
+    closeModal();
+    // 延迟等模态框关闭动画结束后跳转
+    setTimeout(function() {
+      window.location.href = 'test.html?career=' + encodeURIComponent(careerId);
+    }, 400);
+  }
+
+  /* ============================================
+     事件绑定（提取为独立函数，确保两种路径都执行）
+  ============================================ */
+  function bindModalEvents() {
+    var sceneImg = document.getElementById('sceneImg');
+    var closeBtn = document.getElementById('modalCloseBtn');
+    var overlay = document.getElementById('modalOverlay');
+    var backBtn = document.getElementById('modalBackBtn');
+    var ctaBtn = document.getElementById('modalCtaBtn');
+
+    if (sceneImg)  sceneImg.addEventListener('click', nextScene);
+    if (closeBtn)  closeBtn.addEventListener('click', closeModal);
+    if (backBtn)   backBtn.addEventListener('click', closeModal);
+    if (ctaBtn)    ctaBtn.addEventListener('click', goToTest);
+
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+      });
+    }
+  }
+
+  function initIndexPage() {
+    renderDoors();
+    bindModalEvents();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIndexPage);
+  } else {
+    // DOM 已就绪（缓存/回流场景），立即初始化
+    initIndexPage();
+  }
+  </script>
+
+</body>
+</html>
