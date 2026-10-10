@@ -1,6 +1,6 @@
 {
   "version": "2026-reference",
-  "source": "8 条浙江省教育考试院公布的院校 2024 年选科参考；其余 23 条教育部 2026 本科专业目录专业，院校选科待核对",
+  "source": "2026年浙江普通类招生计划（用户提供表格）按院校去重统计；网页公开信息用于核对统计口径",
   "updated": "2026-10-10",
   "majors": [
     {
@@ -9,13 +9,46 @@
       "code": "100201K",
       "category": "普通",
       "subject_required": {
-        "must": ["物理", "化学"],
+        "must": [
+          "物理",
+          "化学"
+        ],
         "limit": [],
         "any": false
       },
       "source": "浙江省教育考试院·苏州大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10285.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 124
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 26
+        },
+        {
+          "subjects": [
+            "物理",
+            "生物"
+          ],
+          "count": 3
+        },
+        {
+          "subjects": [],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "medical-imaging",
@@ -23,13 +56,35 @@
       "code": "100203TK",
       "category": "普通",
       "subject_required": {
-        "must": ["物理", "化学"],
+        "must": [
+          "物理",
+          "化学"
+        ],
         "limit": [],
         "any": false
       },
       "source": "浙江省教育考试院·苏州大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10285.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 31
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 5
+        }
+      ]
     },
     {
       "id": "software-engineering",
@@ -37,13 +92,41 @@
       "code": "080902",
       "category": "普通",
       "subject_required": {
-        "must": ["物理", "化学"],
+        "must": [
+          "物理",
+          "化学"
+        ],
         "limit": [],
         "any": false
       },
       "source": "浙江省教育考试院·苏州大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10285.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 249
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 5
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "computer-science",
@@ -51,13 +134,41 @@
       "code": "080901",
       "category": "普通",
       "subject_required": {
-        "must": ["物理", "化学"],
+        "must": [
+          "物理",
+          "化学"
+        ],
         "limit": [],
         "any": false
       },
       "source": "浙江省教育考试院·苏州大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10285.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 447
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 1
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "law",
@@ -71,7 +182,47 @@
       },
       "source": "浙江省教育考试院·苏州大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10285.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>政治、历史<span class=\"subject-qualifier\">（部分院校）</span></span>；<span>物理、化学<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；政治、历史（部分院校）；物理、化学（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 259
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 9
+        },
+        {
+          "subjects": [
+            "政治"
+          ],
+          "count": 9
+        },
+        {
+          "subjects": [
+            "政治",
+            "历史"
+          ],
+          "count": 5
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 3
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "animation-art",
@@ -86,7 +237,15 @@
       "note": "该院校记录不提选考科目要求；艺术类专业考试类别及要求须按招生章程核对",
       "source": "浙江省教育考试院·景德镇艺术职业大学 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/13435.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "digital-media-tech",
@@ -94,13 +253,41 @@
       "code": "080906",
       "category": "普通",
       "subject_required": {
-        "must": ["物理", "化学"],
+        "must": [
+          "物理",
+          "化学"
+        ],
         "limit": [],
         "any": false
       },
       "source": "浙江省教育考试院·萍乡学院 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10895.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、化学、生物<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；物理、化学、生物（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 84
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 1
+        }
+      ]
     },
     {
       "id": "primary-education",
@@ -115,30 +302,667 @@
       "note": "该院校记录不提选考科目要求；其他院校须单独核对",
       "source": "浙江省教育考试院·萍乡学院 2024 选考要求",
       "source_url": "https://www.zjzs.net/col/xk2024/10895.html",
-      "published": "2024"
+      "published": "2024",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 68
+        }
+      ]
     },
-    {"id":"nursing","name":"护理学","code":"101101K","category":"普通","subject_required":null,"note":"对应护士职业方向；选科及报考条件以院校当年计划为准","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"stomatology","name":"口腔医学","code":"100301K","category":"普通","subject_required":null,"note":"对应口腔医生职业方向；不同于口腔医学技术，需核对培养与执业条件","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"pharmacy","name":"药学","code":"100701","category":"普通","subject_required":null,"note":"对应药学相关职业方向；执业资格另有要求","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"mechanical-engineering","name":"机械工程","code":"080201","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"civil-engineering","name":"土木工程","code":"081001","category":"普通","subject_required":null,"note":"建筑工程职业的参考路径之一，并非建筑师执业资格保证","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"electrical-engineering","name":"电气工程及其自动化","code":"080601","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"data-science","name":"数据科学与大数据技术","code":"080910T","category":"普通","subject_required":null,"note":"数据分析职业的参考路径之一","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"biological-science","name":"生物科学","code":"071001","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"chemistry","name":"化学","code":"070301","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"environmental-science","name":"环境科学","code":"082503","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"journalism","name":"新闻学","code":"050301","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"editing-publishing","name":"编辑出版学","code":"050305","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"translation","name":"翻译","code":"050261","category":"普通","subject_required":null,"note":"外语语种等要求还须查看院校招生章程","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"social-work","name":"社会工作","code":"030302","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"visual-communication","name":"视觉传达设计","code":"130502","category":"美术","subject_required":null,"note":"艺术类报考还须核对相应统考或校考要求","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"photography","name":"摄影","code":"130404","category":"美术","subject_required":null,"note":"艺术类考试类别和院校要求须单独核对","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"recording-arts","name":"录音艺术","code":"130308","category":"音乐","subject_required":null,"note":"音乐类考试类别和院校要求须单独核对","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"information-management","name":"信息管理与信息系统","code":"120102","category":"普通","subject_required":null,"note":"产品经理职业的参考路径之一，并非唯一培养专业","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"marketing","name":"市场营销","code":"120202","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"accounting","name":"会计学","code":"120203K","category":"普通","subject_required":null,"note":"会计师职称或资格不由本科学历自动取得","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"human-resources","name":"人力资源管理","code":"120206","category":"普通","subject_required":null,"source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"education","name":"教育学","code":"040101","category":"普通","subject_required":null,"note":"教师、培训或教育研究的参考路径；任教仍需满足教师资格及招聘条件","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"},
-    {"id":"preschool-education","name":"学前教育","code":"040106","category":"普通","subject_required":null,"note":"幼儿教师方向；任教仍需满足教师资格及招聘条件","source":"教育部《普通高等学校本科专业目录（2026年）》","published":"2026-04"}
+    {
+      "id": "nursing",
+      "name": "护理学",
+      "code": "101101K",
+      "category": "普通",
+      "subject_required": null,
+      "note": "对应护士职业方向；选科及报考条件以院校当年计划为准",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物、物理<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "化学（多数要求）；生物、物理（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "化学"
+          ],
+          "count": 59
+        },
+        {
+          "subjects": [
+            "生物"
+          ],
+          "count": 42
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 11
+        },
+        {
+          "subjects": [
+            "化学",
+            "生物"
+          ],
+          "count": 4
+        },
+        {
+          "subjects": [
+            "物理",
+            "生物"
+          ],
+          "count": 3
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "stomatology",
+      "name": "口腔医学",
+      "code": "100301K",
+      "category": "普通",
+      "subject_required": null,
+      "note": "对应口腔医生职业方向；不同于口腔医学技术，需核对培养与执业条件",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 66
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 12
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "pharmacy",
+      "name": "药学",
+      "code": "100701",
+      "category": "普通",
+      "subject_required": null,
+      "note": "对应药学相关职业方向；执业资格另有要求",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>生物<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；生物（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 137
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 8
+        },
+        {
+          "subjects": [],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 1
+        },
+        {
+          "subjects": [
+            "化学"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "mechanical-engineering",
+      "name": "机械工程",
+      "code": "080201",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 65
+        }
+      ]
+    },
+    {
+      "id": "civil-engineering",
+      "name": "土木工程",
+      "code": "081001",
+      "category": "普通",
+      "subject_required": null,
+      "note": "建筑工程职业的参考路径之一，并非建筑师执业资格保证",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 127
+        }
+      ]
+    },
+    {
+      "id": "electrical-engineering",
+      "name": "电气工程及其自动化",
+      "code": "080601",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 302
+        }
+      ]
+    },
+    {
+      "id": "data-science",
+      "name": "数据科学与大数据技术",
+      "code": "080910T",
+      "category": "普通",
+      "subject_required": null,
+      "note": "数据分析职业的参考路径之一",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>不限<span class=\"subject-qualifier\">（部分院校）</span></span>；<span>物理、化学、生物<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；不限（部分院校）；物理、化学、生物（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 251
+        },
+        {
+          "subjects": [],
+          "count": 5
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "biological-science",
+      "name": "生物科学",
+      "code": "071001",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、化学、生物<span class=\"subject-qualifier\">（部分院校）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；物理、化学、生物（部分院校）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 88
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 9
+        }
+      ]
+    },
+    {
+      "id": "chemistry",
+      "name": "化学",
+      "code": "070301",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、化学、生物、不限<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；物理、化学、生物、不限（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 264
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学",
+            "生物"
+          ],
+          "count": 1
+        },
+        {
+          "subjects": [],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "environmental-science",
+      "name": "环境科学",
+      "code": "082503",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理、化学<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>不限<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理、化学（多数要求）；不限（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 59
+        },
+        {
+          "subjects": [],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "journalism",
+      "name": "新闻学",
+      "code": "050301",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>政治、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；政治、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 98
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 3
+        },
+        {
+          "subjects": [
+            "政治"
+          ],
+          "count": 3
+        },
+        {
+          "subjects": [
+            "政治",
+            "历史",
+            "地理"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "editing-publishing",
+      "name": "编辑出版学",
+      "code": "050305",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "name": "翻译",
+      "code": "050261",
+      "category": "普通",
+      "subject_required": null,
+      "note": "外语语种等要求还须查看院校招生章程",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>政治、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；政治、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 65
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "政治"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "social-work",
+      "name": "社会工作",
+      "code": "030302",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>政治、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；政治、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 52
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "政治"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "政治",
+            "历史",
+            "地理"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "visual-communication",
+      "name": "视觉传达设计",
+      "code": "130502",
+      "category": "美术",
+      "subject_required": null,
+      "note": "艺术类报考还须核对相应统考或校考要求",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>暂无2026年普通类招生计划统计</span>",
+      "subject_stats": []
+    },
+    {
+      "id": "photography",
+      "name": "摄影",
+      "code": "130404",
+      "category": "美术",
+      "subject_required": null,
+      "note": "艺术类考试类别和院校要求须单独核对",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "recording-arts",
+      "name": "录音艺术",
+      "code": "130308",
+      "category": "音乐",
+      "subject_required": null,
+      "note": "音乐类考试类别和院校要求须单独核对",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>暂无2026年普通类招生计划统计</span>",
+      "subject_stats": []
+    },
+    {
+      "id": "information-management",
+      "name": "信息管理与信息系统",
+      "code": "120102",
+      "category": "普通",
+      "subject_required": null,
+      "note": "产品经理职业的参考路径之一，并非唯一培养专业",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>物理<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、化学<span class=\"subject-qualifier\">（部分院校）</span></span>；<span>不限、生物、政治<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "物理（多数要求）；物理、化学（部分院校）；不限、生物、政治（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 73
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 11
+        },
+        {
+          "subjects": [],
+          "count": 1
+        },
+        {
+          "subjects": [
+            "物理",
+            "生物",
+            "政治"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "市场营销",
+      "code": "120202",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；物理、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 130
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "accounting",
+      "name": "会计学",
+      "code": "120203K",
+      "category": "普通",
+      "subject_required": null,
+      "note": "会计师职称或资格不由本科学历自动取得",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；物理、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 323
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 10
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 2
+        },
+        {
+          "subjects": [
+            "物理",
+            "化学"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "human-resources",
+      "name": "人力资源管理",
+      "code": "120206",
+      "category": "普通",
+      "subject_required": null,
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>；<span>物理、历史<span class=\"subject-qualifier\">（少数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）；物理、历史（少数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 125
+        },
+        {
+          "subjects": [
+            "物理"
+          ],
+          "count": 1
+        },
+        {
+          "subjects": [
+            "历史"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "教育学",
+      "code": "040101",
+      "category": "普通",
+      "subject_required": null,
+      "note": "教师、培训或教育研究的参考路径；任教仍需满足教师资格及招聘条件",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 22
+        }
+      ]
+    },
+    {
+      "id": "preschool-education",
+      "name": "学前教育",
+      "code": "040106",
+      "category": "普通",
+      "subject_required": null,
+      "note": "幼儿教师方向；任教仍需满足教师资格及招聘条件",
+      "source": "教育部《普通高等学校本科专业目录（2026年）》",
+      "published": "2026-04",
+      "subject_summary_html": "<span>不限选科<span class=\"subject-qualifier\">（多数要求）</span></span>",
+      "subject_summary_plain": "不限选科（多数要求）",
+      "subject_stats": [
+        {
+          "subjects": [],
+          "count": 69
+        }
+      ]
+    }
   ]
 }

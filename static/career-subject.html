@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <script>if (location.protocol === "file:") location.replace('index.html#subject/' + encodeURIComponent(new URLSearchParams(location.search).get('career_id') || ''));</script>
+  <script>if (location.protocol === "file:") location.replace('index.html');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>选科结果 · life-coordinate</title>
   <link rel="stylesheet" href="/static/css/base.css">
   <link rel="stylesheet" href="/static/css/page-result.css">
-  <link rel="stylesheet" href="/assets/liquid-glass.css">
+  <link rel="stylesheet" href="/assets/liquid-glass.css?v=20261010-6">
 </head>
 <body class="standalone">
   <header><a class="brand" href="/">life-coordinate</a><nav class="site-nav" aria-label="主导航"><a href="/">首页</a><a href="/#explore">探索职业</a><a href="/subject">选科反查</a></nav></header>
@@ -17,7 +17,7 @@
       <a href="/" class="back-link">← 返回首页</a>
     </header>
 
-    <p>已核对项为指定院校的 2024 年选科要求，供 2026 年参考；未核对项会明确标注。实际报考以院校当年招生计划和章程为准。</p>
+    <p class="reference-notice">专业关联仅用于探索方向，不代表录取或获得执业资格。已核对项是指定院校公布的 2024 年选科要求，供 2026 年参考；“项目尚未核对”表示本项目尚未补齐院校样本，不需要访问者核对。实际报考以院校当年招生计划和章程为准。</p>
 
     <button id="retry-load" class="primary" hidden>重新加载</button>
     <div class="major-list" id="major-list"></div>
@@ -28,7 +28,7 @@
     </div>
   </main>
 
-  <script src="/assets/ui-common.js"></script>
+  <script src="/assets/ui-common.js?v=20261010-2"></script>
   <script src="/static/js/page-result.js"></script>
 </body>
 </html>

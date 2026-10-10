@@ -112,12 +112,13 @@ def test_site_data_matches_backend():
     assert {m["careerId"] for m in data_loader.MAPPINGS} == set(data_loader.CAREERS)
 
 
-def test_unverified_requirements_not_marked_eligible():
+def test_reference_requirements_are_consistent_for_unlisted_majors():
     setup_module()
     from app.services.reverse import _major_fits
     nursing = data_loader.MAJORS["nursing"]
     assert nursing.subject_required is None
-    assert not _major_fits(nursing, {"物理", "化学", "生物"})
+    assert _major_fits(nursing, {"物理", "化学", "生物"})
+    assert not _major_fits(nursing, {"物理", "生物", "技术"})
 
 
 def test_api_rejects_invalid_subjects():

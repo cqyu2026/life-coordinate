@@ -61,6 +61,7 @@ def get_career_subject(career_id: str):
                     "limit": m.subject_required.limit,
                     "any": m.subject_required.any,
                 } if m.subject_required else None,
+                "subject_stats": m.subject_stats,
                 "note": m.note,
                 "source": m.source,
                 "source_url": m.source_url,
@@ -95,6 +96,7 @@ def search_majors(subjects: str = Query("", description="逗号分隔，如 物�
                     "limit": m["major"].subject_required.limit,
                     "any": m["major"].subject_required.any,
                 } if m["major"].subject_required else None,
+                "subject_stats": m["major"].subject_stats,
             },
             "careers": [{"id": c.id, "name": c.name, "category": c.category} for c in m["careers"]],
         }

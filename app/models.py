@@ -35,6 +35,7 @@ class Major(BaseModel):
     code: str
     category: Literal["普通", "美术", "音乐", "体育", "舞蹈", "表演", "播音"]
     subject_required: SubjectRequirement | None = None
+    subject_stats: list[dict] = []
     note: str = ""
     source: str
     source_url: str = ""

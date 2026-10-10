@@ -95,7 +95,7 @@ test('reverse law result exposes both careers and source/details', () => {
   assert.match(html, /data-career="lawyer"/);
   assert.match(html, /data-career="legal-counsel"/);
   assert.match(html, /查看专业说明/);
-  assert.match(html, /target="_blank"/);
+  assert.match(html, /来源：教育部《普通高等学校本科专业目录（2026年）》 · 2026-04/);
   assert.doesNotMatch(html, /undefined/);
 });
 
@@ -128,9 +128,13 @@ test('homepage selection and modal restore focus/background', () => {
 test('unverified major has explicit status; dynamic text is escaped', () => {
   const e = environment();
   const html = e.context.siteUI.majorContent({ ...major, name: '<script>bad</script>', subject_required: null });
-  assert.match(html, /待核对 · 不参与反查/);
+  assert.doesNotMatch(html, /project|verification|已核对选科要求|项目尚未核对院校选科要求|不参与反查/i);
   assert.match(html, /&lt;script&gt;/);
   assert.doesNotMatch(html, /<script>/);
+  assert.doesNotMatch(html, /专业关联是探索方向/);
+  assert.match(html, /暂无2026年普通类招生计划统计/);
+  assert.match(html, /major-source/);
+  assert.match(html, /<details[\s\S]*major-source/);
 });
 
 function reversePage() {

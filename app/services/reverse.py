@@ -6,8 +6,10 @@ from ..models import Career, Major
 def _major_fits(major: Major, selected: set[str]) -> bool:
     """一个专业是否对当前选科组合开放。"""
     req = major.subject_required
+    if selected and major.subject_stats:
+        return any(set(option.get("subjects", [])) <= selected for option in major.subject_stats)
     if req is None:
-        return False  # 未核实院校选科要求，不参与可报匹配
+        return False
     # must 全部选中
     for s in req.must:
         if s not in selected:

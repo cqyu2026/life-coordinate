@@ -67,3 +67,7 @@
 |`static/assets/career-catalog.js`|原 30 职业列表已合并至 `data/careers.json` 并由脚本生成 `static/assets/site-data.js`；现有页面不再引用旧脚本。|
 
 可从上述恢复包还原原文件。当前页面与后端已共用 `data/` 业务数据；更新数据后须运行 `.venv/bin/python scripts/build_site_data.py`，测试会检查生成文件是否同步。
+
+## 2026-10-10：未使用选择器 GIF 清理
+
+用户确认删除 `static/assets/career-gifs/`，包含 30 个 42×42 小 GIF 与其 README。逐项检索确认当前页面与脚本没有引用该目录；首页职业选择器使用 `static/assets/*.svg`，详情动画使用 `career-gif/`。删除不影响当前入口。

@@ -56,20 +56,20 @@ class Regressions(unittest.TestCase):
         self.assertEqual({c['name'] for c in law['careers']}, {'律师', '法务专员'})
         for row in rows:
             self.assertTrue({'code', 'published', 'note', 'source_url'} <= row['major'].keys())
-            self.assertIsNotNone(row['major']['subject_required'])
+            self.assertTrue(row['major']['subject_required'] is not None or row['major'].get('subject_stats'))
 
     def test_page_assets_resolve_over_http_and_homepage_file_path(self):
         async def check():
             for route in ['/', '/static/index.html', '/subject', '/career-subject']:
                 status, body = await request(route)
                 self.assertEqual(status, 200, route)
-                for asset in re.findall(r'(?:src|href)="([^"]+\.(?:js|css|gif|png))"', body.decode()):
+                for asset in re.findall(r'(?:src|href)="([^"]+\.(?:js|css|gif|png))(?:\?[^"#]*)?"', body.decode()):
                     absolute = urlparse(urljoin('http://localhost' + route, asset)).path
                     status, _ = await request(absolute)
                     self.assertEqual(status, 200, (route, asset))
         asyncio.run(check())
         html = (ROOT / 'static/index.html').read_text()
-        for asset in re.findall(r'(?:src|href)="([^"]+\.(?:js|css|gif|png))"', html):
+        for asset in re.findall(r'(?:src|href)="([^"]+\.(?:js|css|gif|png))(?:\?[^"#]*)?"', html):
             self.assertTrue((ROOT / 'static' / asset).is_file(), asset)
         for career in data_loader.CAREERS.values():
             icon = ROOT / ('static/assets/career-png/primary-teacher.png' if career.id == 'primary-teacher' else f'static/assets/{career.icon}.svg')
