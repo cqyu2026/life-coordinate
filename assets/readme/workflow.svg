@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+  <title id="title">面向浙江高中未选科学生与家长的职业、专业、选科反查</title>
+  <desc id="desc">从职业日常出发，反查关联本科专业，再参考浙江 2026 年普通类招生计划中的选考科目要求。</desc>
+  <rect width="1200" height="360" rx="28" fill="#f6f3ed"/>
+  <path d="M360 198h120M720 198h120" stroke="#2b756b" stroke-width="3" stroke-linecap="round"/>
+  <path d="m462 188 18 10-18 10M822 188l18 10-18 10" fill="none" stroke="#2b756b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" fill="#1f2e2b">
+    <text x="56" y="56" font-size="17" fill="#6c7773" letter-spacing="2">LIFE / COORDINATE · ZHEJIANG</text>
+    <text x="56" y="101" font-size="32" font-weight="700">给还没选科的学生和家长，一条反查路径</text>
+    <text x="56" y="134" font-size="18" fill="#68736f">职业日常 → 关联专业 → 选考科目</text>
+    <rect x="56" y="208" width="270" height="104" rx="18" fill="#dcefe9" stroke="#b5d9d0"/>
+    <text x="80" y="243" font-size="16" fill="#2b756b">01 / 先看职业</text>
+    <text x="80" y="280" font-size="25" font-weight="700">职业日常</text>
+    <text x="80" y="303" font-size="15" fill="#68736f">任务 · 场景 · 工作节奏</text>
+    <rect x="480" y="208" width="240" height="104" rx="18" fill="#f0e8dc" stroke="#dfcdb9"/>
+    <text x="504" y="243" font-size="16" fill="#9b6c45">02 / 再找专业</text>
+    <text x="504" y="280" font-size="25" font-weight="700">关联本科专业</text>
+    <text x="504" y="303" font-size="15" fill="#68736f">专业代码 · 专业说明</text>
+    <rect x="840" y="208" width="304" height="104" rx="18" fill="#e8e8f4" stroke="#cacae4"/>
+    <text x="864" y="243" font-size="16" fill="#5d5c8d">03 / 最后反查</text>
+    <text x="864" y="280" font-size="25" font-weight="700">浙江选科统计</text>
+    <text x="864" y="303" font-size="15" fill="#68736f">2026 普通类 · 院校数量</text>
+  </g>
+</svg>
